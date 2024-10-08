@@ -1,0 +1,33 @@
+services:
+  app:
+    build:
+      context: .
+      args:
+        - DEV=true # Set the build argument for development mode
+    ports:
+      - "7128:7128" # Map port 7128 on the host to port 7128 in the container
+    volumes:
+      - ./ashtray_meny:/ashtray_meny # Mount the local app directory to the container
+    command: >
+      sh -c "python manage.py wait_for_db &&
+              python manage.py migrate &&
+              python manage.py runserver 0.0.0.0:7128"  # Update to use port 7128
+    environment:
+      - DB_HOST=db # Database host
+      - DB_NAME=devdb # Database name
+      - DB_USER=devuser # Database user
+      - DB_PASS=Hello128$$ # Database password
+    depends_on:
+      - db # Ensure db service starts before app service
+
+  db:
+    image: postgres:13-alpine # Use the specified PostgreSQL image
+    volumes:
+      - dev-db-data:/var/lib/postgresql/data # Mount volume for persistent data
+    environment:
+      - POSTGRES_DB=devdb # PostgreSQL database name
+      - POSTGRES_USER=devuser # PostgreSQL user
+      - POSTGRES_PASSWORD=Hello128$$ # PostgreSQL password
+
+volumes:
+  dev-db-data: # Define the volume for database data
