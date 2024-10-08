@@ -19,6 +19,7 @@ services:
       - DB_NAME=devdb # Database name
       - DB_USER=devuser # Database user
       - DB_PASS=Hello128$$ # Database password
+
     depends_on:
       - db # Ensure db service starts before app service
 
@@ -26,6 +27,8 @@ services:
     image: postgres:13-alpine # Use the specified PostgreSQL image
     volumes:
       - dev-db-data:/var/lib/postgresql/data # Mount volume for persistent data
+    ports:
+      - "5128:5128" # Map port 5128 on the host to port 5432 in the container
     environment:
       - POSTGRES_DB=devdb # PostgreSQL database name
       - POSTGRES_USER=devuser # PostgreSQL user
