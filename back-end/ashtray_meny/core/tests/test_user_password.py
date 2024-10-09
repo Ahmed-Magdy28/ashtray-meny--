@@ -17,7 +17,7 @@ class PasswordTests(TestCase):
             )  # type: ignore
 
     def test_create_user_with_short_password(self):
-        """Test creating a user with a short password raises a validation error"""
+        """Test creating user with a short password give validation error"""
         email = "test@example.com"
         short_password = "Ab1!"  # too short
 
@@ -29,7 +29,7 @@ class PasswordTests(TestCase):
             )
 
     def test_create_user_with_no_uppercase_password(self):
-        """Test creating a user with no uppercase letter raises a validation error"""
+        """Test creating a user with no uppercases give a validation error"""
         email = "test@example.com"
         password_no_uppercase = "testpassword123!"
 
@@ -41,7 +41,7 @@ class PasswordTests(TestCase):
             )
 
     def test_create_user_with_no_lowercase_password(self):
-        """Test creating a user with no lowercase letter raises a validation error"""
+        """Test creating a user with no lowercases raise a validation error"""
         email = "test@example.com"
         password_no_lowercase = "TESTPASSWORD123!"
 
@@ -65,7 +65,7 @@ class PasswordTests(TestCase):
             )
 
     def test_create_user_with_no_special_character_password(self):
-        """Test creating a user with no special character raises a validation error"""
+        """Test creating user without special char raises validation error"""
         email = "test@example.com"
         password_no_special_char = "TestPassword123"
 

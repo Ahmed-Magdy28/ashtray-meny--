@@ -17,7 +17,7 @@ class PasswordTests(TestCase):
             )
 
     # def test_create_user_with_existing_username_raises_error(self):
-    #     """Test that creating a user with an existing username raises an error."""
+    #     """Test creating an existing username raises an error."""
     #     username = "testuser"
     #     email1 = "user1@example.com"
     #     email2 = "user2@example.com"  # Different email for the second user

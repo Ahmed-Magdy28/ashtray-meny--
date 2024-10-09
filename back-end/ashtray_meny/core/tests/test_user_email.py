@@ -33,11 +33,11 @@ class EmailTests(TestCase):
             )
 
     # def test_create_user_with_existing_email_raises_error(self):
-    #     """Test that creating a user with an existing email raises an error."""
+    #     """Test that create user with an existing mail give an error."""
     #     email = "test@example.com"
     #     password = "ValidPassword123$"
     #     username1 = "unique_username1"
-    #     username2 = "unique_username2"  # Change username to ensure uniqueness
+    #     username2 = "unique_username2" # change UN ensureing uniqueness
 
     #     # Create the first user
     #     get_user_model().objects.create_user(
