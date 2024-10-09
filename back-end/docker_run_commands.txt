@@ -1,38 +1,37 @@
 #!/usr/bin/bash
-# "to run tests"
-docker-compose run --rm app sh -c "python manage.py test"
-# to make migrations
-docker-compose run --rm app sh -c "python manage.py makemigrations"
-# to migrate the data
-docker-compose run --rm app sh -c "python manage.py migrate"
-# to check if the app wait for the data or not
-docker-compose run --rm app sh -c "python manage.py wait_for_db"
-# to check for the data and then run the tests
-docker-compose run --rm app sh -c "python manage.py wait_for_db && python manage.py test"
-# to test if the data is available and to migrate the models to the database
-docker-compose run --rm app sh -c "python manage.py wait_for_db && python manage.py migrate"
-#  to create a new superuser
-docker-compose run --rm app sh -c "python manage.py createsuperuser"
 
 # "to build without cache"
 docker-compose build --no-cache
 
 # "to up the server"
 docker-compose up
+
 #  to get docker down run
 docker-compose down
 
+# "to run tests"
+docker-compose run --rm app sh -c "python manage.py test"
 
-# "give new command for docker"
-docker-compose run --rm app sh -c "Input here"
+# to make migrations
+docker-compose run --rm app sh -c "python manage.py makemigrations"
 
-docker-compose run --rm app sh -c "python manage.py startapp"
+# to migrate the data
+docker-compose run --rm app sh -c "python manage.py migrate"
 
-
-# " to check for the db:"
+# to check if the app wait for the data or not
 docker-compose run --rm app sh -c "python manage.py wait_for_db"
-# "with linting:"
-docker-compose run --rm app sh -c "python manage.py wait_for_db && flake8"
+
+# to check for the data and then run the tests
+docker-compose run --rm app sh -c "python manage.py wait_for_db && python manage.py test"
+
+# to test if the data is available and to migrate the models to the database
+docker-compose run --rm app sh -c "python manage.py wait_for_db && python manage.py migrate"
+
+#  to create a new superuser
+docker-compose run --rm app sh -c "python manage.py createsuperuser"
+
+# "check linting: with pycodestyle"
+docker-compose run --rm app sh -c "pycodestyle ."
 
 
 # tells you about all the data in the docker
@@ -47,6 +46,6 @@ docker-compose run --rm app sh -c "django-admin startproject app ."
 docker-compose run --rm app sh -c "python manage.py startapp core"
 
 # Django
-# email: HelloWorld@gmail.com
-# username: Hellomango
+# email: ahmedmagdy2849@gmail.com
+# username: Admin
 # password: Hello128$
